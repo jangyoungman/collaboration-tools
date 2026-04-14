@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>협업 도구 구성 가이드 - INNODIGM</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Malgun Gothic', '맑은 고딕', sans-serif; background: #f8fafc; color: #1e293b; }
+    .header { background: #0f172a; color: #fff; padding: 40px 32px; text-align: center; }
+    .header h1 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+    .header p { font-size: 13px; color: #94a3b8; }
+    .container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+    h2 { font-size: 18px; font-weight: 700; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+    h3 { font-size: 15px; font-weight: 700; margin: 24px 0 12px; color: #334155; }
+    p { font-size: 14px; line-height: 1.8; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    th { background: #f1f5f9; padding: 10px 12px; text-align: left; border: 1px solid #e2e8f0; font-weight: 700; }
+    td { padding: 10px 12px; border: 1px solid #e2e8f0; }
+    pre { background: #1e293b; color: #e2e8f0; padding: 16px; overflow-x: auto; font-size: 13px; line-height: 1.6; margin: 12px 0; }
+    code { font-family: 'Consolas', 'Courier New', monospace; }
+    .inline-code { background: #f1f5f9; padding: 2px 6px; font-size: 13px; color: #e11d48; }
+    .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 16px; margin: 16px 0; font-size: 13px; }
+    .warn-box { background: #fefce8; border-left: 4px solid #eab308; padding: 16px; margin: 16px 0; font-size: 13px; }
+    .diagram { background: #1e293b; color: #67e8f9; padding: 20px; font-family: 'Consolas', monospace; font-size: 13px; line-height: 1.6; margin: 16px 0; white-space: pre; overflow-x: auto; }
+    .back-link { display: inline-block; margin-bottom: 24px; color: #6366f1; text-decoration: none; font-size: 13px; }
+    .back-link:hover { text-decoration: underline; }
+    .footer { text-align: center; padding: 24px; color: #94a3b8; font-size: 11px; }
+    ul, ol { margin: 12px 0 12px 24px; font-size: 14px; line-height: 1.8; }
+    a { color: #4f46e5; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>협업 도구 구성 가이드</h1>
+  <p>Jira + Confluence + Slack + Google Drive 협업 환경</p>
+</div>
+
+<div class="container">
+  <a href="index.html" class="back-link">&larr; 매뉴얼 목록으로</a>
+
+  <!-- 1. 개요 -->
+  <h2>1. 개요</h2>
+  <p>전자결재시스템 프로젝트(8명)의 협업 환경으로 Jira, Confluence, Slack, Google Drive를 구성했습니다. 모두 무료 플랜으로 운영됩니다.</p>
+
+  <table>
+    <tr><th>도구</th><th>역할</th><th>비유</th><th>무료 조건</th></tr>
+    <tr><td><strong>Jira</strong></td><td>이슈/작업 관리</td><td>업무 칸반 보드</td><td>10명 이하</td></tr>
+    <tr><td><strong>Confluence</strong></td><td>문서 관리</td><td>팀 위키</td><td>10명 이하, 스토리지 2GB</td></tr>
+    <tr><td><strong>Slack</strong></td><td>실시간 소통</td><td>팀 메신저</td><td>무제한 (메시지 90일 보관)</td></tr>
+    <tr><td><strong>Google Drive</strong></td><td>대용량 파일 공유</td><td>공유 폴더</td><td>15GB</td></tr>
+  </table>
+
+  <div class="diagram">
+GitLab (코드 Push/MR) ──알림──▶ Slack 채널
+Jira (이슈 변경)      ──알림──▶ Slack 채널
+Confluence (문서)                    ▲
+Google Drive (파일)             8명 실시간 소통</div>
+
+  <!-- 2. 접속 정보 -->
+  <h2>2. 접속 정보</h2>
+
+  <table>
+    <tr><th>도구</th><th>URL</th><th>계정</th></tr>
+    <tr><td>Jira</td><td><a href="https://innodigm.atlassian.net">https://innodigm.atlassian.net</a></td><td>Atlassian 계정 (회사 이메일)</td></tr>
+    <tr><td>Confluence</td><td><a href="https://innodigm.atlassian.net/wiki">https://innodigm.atlassian.net/wiki</a></td><td>Atlassian 계정 (동일)</td></tr>
+    <tr><td>Jira 프로젝트 보드</td><td><a href="https://innodigm.atlassian.net/jira/software/projects/SCRUM/board">프로젝트 보드 바로가기</a></td><td></td></tr>
+    <tr><td>Confluence 스페이스</td><td><a href="https://innodigm.atlassian.net/wiki/spaces/IGSQU">전자계약시스템 스페이스</a></td><td></td></tr>
+    <tr><td>Slack</td><td>INNODIGM 워크스페이스</td><td>회사 이메일로 가입</td></tr>
+    <tr><td>Google Drive</td><td><a href="https://drive.google.com/drive/folders/1rRH_tfIqYLjzY_58_6DFHDF1Bocs-i_E?usp=drive_link">공유자료 폴더</a></td><td>링크 공유 (별도 계정 불필요)</td></tr>
+  </table>
+
+  <div class="info-box">
+    <strong>관리자 계정:</strong> gellotin@indg.co.kr (Atlassian Site admin)
+  </div>
+
+  <!-- 3. Jira -->
+  <h2>3. Jira - 이슈/작업 관리</h2>
+
+  <h3>3-1. 프로젝트 정보</h3>
+  <table>
+    <tr><th>항목</th><th>값</th></tr>
+    <tr><td>프로젝트명</td><td>전자계약시스템_이노다임</td></tr>
+    <tr><td>프로젝트 키</td><td>SCRUM</td></tr>
+    <tr><td>방법론</td><td>Scrum (스프린트 단위 관리)</td></tr>
+  </table>
+
+  <h3>3-2. 워크플로우</h3>
+  <div class="diagram">
+TO DO → IN PROGRESS → IN REVIEW → DONE</div>
+
+  <table>
+    <tr><th>상태</th><th>설명</th></tr>
+    <tr><td>TO DO</td><td>할 일 (아직 시작하지 않음)</td></tr>
+    <tr><td>IN PROGRESS</td><td>진행 중 (작업자가 작업 중)</td></tr>
+    <tr><td>IN REVIEW</td><td>리뷰 중 (코드 리뷰, 검토)</td></tr>
+    <tr><td>DONE</td><td>완료</td></tr>
+  </table>
+
+  <h3>3-3. 이슈 구조</h3>
+  <table>
+    <tr><th>이슈 유형</th><th>용도</th><th>예시</th></tr>
+    <tr><td>에픽 (Epic)</td><td>큰 카테고리</td><td>기존 시스템 분석</td></tr>
+    <tr><td>작업 (Task)</td><td>실제 할 일</td><td>현행 결재 프로세스 분석</td></tr>
+    <tr><td>버그 (Bug)</td><td>결함 보고</td><td>로그인 실패 오류</td></tr>
+  </table>
+
+  <h3>3-4. 이슈 생성 방법</h3>
+  <ol>
+    <li>상단 <strong>+ 만들기</strong> 클릭</li>
+    <li>이슈 유형 선택 (에픽/작업/버그)</li>
+    <li>제목, 설명, 담당자, 우선순위, 기한 입력</li>
+    <li><strong>만들기</strong> 클릭</li>
+  </ol>
+
+  <!-- 4. Confluence -->
+  <h2>4. Confluence - 문서 관리</h2>
+
+  <h3>4-1. 스페이스 정보</h3>
+  <table>
+    <tr><th>항목</th><th>값</th></tr>
+    <tr><td>스페이스명</td><td>전자계약시스템_이노다임</td></tr>
+    <tr><td>스페이스 키</td><td>IGSQU</td></tr>
+    <tr><td>URL</td><td><a href="https://innodigm.atlassian.net/wiki/spaces/IGSQU">https://innodigm.atlassian.net/wiki/spaces/IGSQU</a></td></tr>
+  </table>
+
+  <h3>4-2. 페이지 구조</h3>
+  <div class="diagram">
+전자결재시스템 프로젝트 허브 (Home)
+  ├─ 프로젝트 개요
+  │    - 목적, 팀원 역할, 기술 스택, 주요 일정
+  ├─ 기존 시스템 분석
+  │    - 현행 프로세스, 화면/DB 분석, 개선사항
+  ├─ 요구사항 정의서
+  │    - 기능/비기능 요구사항
+  ├─ 설계 문서
+  │    - 화면 설계, DB 설계, API 설계
+  ├─ 개발 환경 설정 가이드
+  │    - 필수 프로그램, VS Code 확장, 설치 순서
+  ├─ 공유 자료실
+  │    - Confluence 첨부파일 + Google Drive 링크
+  ├─ 회의록
+  │    └─ 2026-04-13 킥오프 미팅 (양식)
+  └─ 주간보고
+       └─ 2026년 16주차 (04/13 ~ 04/17) (양식)</div>
+
+  <h3>4-3. 주요 기능</h3>
+  <table>
+    <tr><th>기능</th><th>방법</th></tr>
+    <tr><td>페이지 생성</td><td>스페이스에서 <strong>페이지 만들기</strong> 클릭</td></tr>
+    <tr><td>하위 페이지 생성</td><td>페이지 우측 <strong>...</strong> → <strong>하위 페이지 만들기</strong></td></tr>
+    <tr><td>페이지 복사</td><td>페이지 우측 <strong>...</strong> → <strong>페이지 복사</strong> (회의록/주간보고 양식 재사용)</td></tr>
+    <tr><td>파일 첨부</td><td>편집 모드에서 파일 드래그앤드롭</td></tr>
+    <tr><td>첨부파일 삭제</td><td>관리자에게 요청 (API로 삭제)</td></tr>
+  </table>
+
+  <h3>4-4. 회의록 양식</h3>
+  <table>
+    <tr><th>섹션</th><th>내용</th></tr>
+    <tr><td>기본 정보</td><td>회의명, 일시, 장소, 작성자, 참석자</td></tr>
+    <tr><td>안건</td><td>번호, 안건, 발표자, 비고</td></tr>
+    <tr><td>논의 내용</td><td>번호, 내용, 상세, 비고</td></tr>
+    <tr><td>결정 사항</td><td>번호, 결정 내용, 담당자, 기한, 비고</td></tr>
+    <tr><td>Action Items</td><td>체크박스 형태의 할 일 목록</td></tr>
+    <tr><td>다음 회의</td><td>일시, 장소, 안건</td></tr>
+  </table>
+
+  <h3>4-5. 주간보고 양식</h3>
+  <table>
+    <tr><th>섹션</th><th>내용</th></tr>
+    <tr><td>기본 정보</td><td>프로젝트명, 보고일, 작성자, 전체 진행률</td></tr>
+    <tr><td>금주 실적</td><td>작업 내용, 담당자, 진행률, 비고</td></tr>
+    <tr><td>차주 계획</td><td>작업 내용, 담당자, 예정일, 비고</td></tr>
+    <tr><td>이슈 및 리스크</td><td>이슈/리스크, 심각도, 대응 방안, 담당자, 상태</td></tr>
+    <tr><td>특이 사항</td><td>기타 공유 사항</td></tr>
+  </table>
+
+  <!-- 5. Slack -->
+  <h2>5. Slack - 실시간 소통</h2>
+
+  <h3>5-1. 워크스페이스</h3>
+  <table>
+    <tr><th>항목</th><th>값</th></tr>
+    <tr><td>워크스페이스</td><td>INNODIGM</td></tr>
+    <tr><td>가입 방법</td><td>관리자가 이메일로 초대</td></tr>
+  </table>
+
+  <h3>5-2. 연동</h3>
+  <table>
+    <tr><th>연동</th><th>기능</th><th>설정 방법</th></tr>
+    <tr><td>Jira Cloud</td><td>이슈 생성/변경 시 Slack 알림</td><td>Slack 앱에서 Jira Cloud 추가</td></tr>
+    <tr><td>GitLab</td><td>Push/MR 시 Slack 알림</td><td>GitLab Webhook 또는 Slack 앱</td></tr>
+  </table>
+
+  <h3>5-3. 무료 플랜 제한</h3>
+  <ul>
+    <li>메시지 보관: 90일 (이전 메시지 검색/열람 불가)</li>
+    <li>앱 연동: 최대 10개</li>
+    <li>인원 제한: 없음</li>
+  </ul>
+
+  <!-- 6. Google Drive -->
+  <h2>6. Google Drive - 대용량 파일 공유</h2>
+
+  <table>
+    <tr><th>항목</th><th>값</th></tr>
+    <tr><td>공유 폴더</td><td><a href="https://drive.google.com/drive/folders/1rRH_tfIqYLjzY_58_6DFHDF1Bocs-i_E?usp=drive_link">전자결재시스템 - 공유자료</a></td></tr>
+    <tr><td>용도</td><td>설치 파일, 대용량 파일 공유</td></tr>
+    <tr><td>용량</td><td>15GB (무료)</td></tr>
+    <tr><td>권한</td><td>링크가 있는 사용자 접근 가능</td></tr>
+  </table>
+
+  <h3>파일 저장 기준</h3>
+  <table>
+    <tr><th>파일 종류</th><th>저장 위치</th></tr>
+    <tr><td>문서, 엑셀 등 (작은 파일)</td><td>Confluence 공유 자료실 첨부</td></tr>
+    <tr><td>설치 파일, 영상 등 (큰 파일)</td><td>Google Drive</td></tr>
+  </table>
+
+  <!-- 7. 팀원 초대 -->
+  <h2>7. 팀원 초대 방법</h2>
+
+  <h3>Jira + Confluence (Atlassian)</h3>
+  <ol>
+    <li><a href="https://admin.atlassian.com">https://admin.atlassian.com</a> 접속</li>
+    <li><strong>사용자</strong> → <strong>사용자 초대</strong></li>
+    <li>이메일 입력, 역할: <strong>Basic</strong> (일반 팀원)</li>
+    <li>초대 수락 후 Jira + Confluence 모두 접근 가능</li>
+  </ol>
+
+  <h3>Slack</h3>
+  <ol>
+    <li>Slack 워크스페이스에서 별도로 초대</li>
+    <li>워크스페이스 이름 클릭 → <strong>사람 초대</strong></li>
+  </ol>
+
+  <h3>권한 종류</h3>
+  <table>
+    <tr><th>역할</th><th>권한</th><th>대상</th></tr>
+    <tr><td>Site admin</td><td>모든 관리 권한 (설정 변경, 사용자 관리)</td><td>관리자</td></tr>
+    <tr><td>Basic</td><td>이슈 생성/수정, 문서 작성/편집</td><td>일반 팀원</td></tr>
+  </table>
+
+  <!-- 8. API 관리 -->
+  <h2>8. API 관리 (관리자용)</h2>
+
+  <p>Confluence 페이지 생성/수정/첨부파일 삭제 등을 API로 처리할 수 있습니다.</p>
+
+  <table>
+    <tr><th>항목</th><th>값</th></tr>
+    <tr><td>인증 방식</td><td>Basic Auth (이메일 + API 토큰)</td></tr>
+    <tr><td>API 토큰 관리</td><td><a href="https://id.atlassian.com/manage-profile/security/api-tokens">Atlassian API 토큰 관리</a></td></tr>
+    <tr><td>Confluence API</td><td>https://innodigm.atlassian.net/wiki/api/v2/</td></tr>
+    <tr><td>Jira API</td><td>https://innodigm.atlassian.net/rest/api/3/</td></tr>
+  </table>
+
+  <h3>자주 사용하는 API</h3>
+  <pre><code># 페이지 목록 조회
+curl -u "이메일:API토큰" \
+  "https://innodigm.atlassian.net/wiki/api/v2/spaces/229379/pages"
+
+# 페이지 생성
+curl -u "이메일:API토큰" -X POST \
+  "https://innodigm.atlassian.net/wiki/api/v2/pages" \
+  -H "Content-Type: application/json" \
+  -d '{"spaceId":"229379","title":"제목","body":{"representation":"storage","value":"내용"}}'
+
+# 첨부파일 삭제
+curl -u "이메일:API토큰" -X DELETE \
+  "https://innodigm.atlassian.net/wiki/api/v2/attachments/첨부파일ID"</code></pre>
+
+  <!-- 9. 업무 흐름 -->
+  <h2>9. 전체 업무 흐름</h2>
+
+  <div class="diagram">
+1. Confluence에 스펙 문서 작성
+        │
+2. Jira에 이슈 생성 (담당자, 기한 배정)
+        │
+3. 담당자가 Jira 이슈를 IN PROGRESS로 이동
+   → Slack 자동 알림
+        │
+4. GitLab에 코드 Push
+   → Slack 자동 알림
+        │
+5. 코드 리뷰 → Jira IN REVIEW
+        │
+6. 완료 → Jira DONE
+   → Slack 자동 알림
+        │
+7. 주간보고에 진행 상황 정리 (Confluence)</div>
+
+  <!-- 10. 트러블슈팅 -->
+  <h2>10. 트러블슈팅</h2>
+
+  <table>
+    <tr><th>문제</th><th>해결</th></tr>
+    <tr><td>Confluence 스페이스를 못 찾겠음</td><td><a href="https://innodigm.atlassian.net/wiki/spaces/IGSQU">직접 링크</a>로 접속</td></tr>
+    <tr><td>Jira 프로젝트가 안 보임</td><td><a href="https://innodigm.atlassian.net/jira/software/projects/SCRUM/board">프로젝트 보드 직접 링크</a></td></tr>
+    <tr><td>Slack에서 /jira 명령어 안 됨</td><td>Slack 앱에서 Jira Cloud 앱 설치 필요</td></tr>
+    <tr><td>Confluence 첨부파일 삭제 안 됨</td><td>관리자에게 요청 (API로 삭제 가능)</td></tr>
+    <tr><td>Google Drive 접근 안 됨</td><td>공유 설정 확인: "링크가 있는 모든 사용자"로 설정</td></tr>
+    <tr><td>팀원이 10명 넘으면?</td><td>Jira/Confluence 유료 전환 필요 (1인당 월 $8.15)</td></tr>
+  </table>
+
+</div>
+
+<div class="footer">
+  INNODIGM | 사내 매뉴얼 시스템<br>
+  최종 수정: 2026-04-14
+</div>
+
+</body>
+</html>
